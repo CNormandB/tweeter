@@ -1,0 +1,24 @@
+.nav-bar {
+  background-color: #4056A1;
+  color:#FFFFFF;
+  height:120px;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1.5em;
+  align-items: flex-end;
+  position: fixed;
+}
+.logo {
+  font-family: "bungee", sans-serif;
+  font-size: 45px;
+
+}
+.new-tweet-div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
