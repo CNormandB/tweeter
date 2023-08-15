@@ -1,0 +1,10 @@
+.header{
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+  justify-content: center;
+  align-items: center;
+  background-color: #7e9a9a;
+  color: #FFFFFF;
+  background-image: url("/images/cartographer.png");
+}
