@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/posted-tweet.css" type="text/css" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -30,15 +31,14 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-   
-    <nav class = "nav-bar">
+       <nav class = "nav-bar">
       <span class = "logo">tweeter</span>
       <div class = "new-tweet-div">
         <span><em>Write</em> a new tweet</span>   
         <i class="fa-solid fa-angles-down" style="color: #f21823;"></i>
       </div>
     </nav>
-
+    <!-- header -->
     <header class = "header">
       <div>
           <img src="/images/profile-hex.png"> 
@@ -55,11 +55,37 @@
         <form class="new-tweet-form" method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text-box"></textarea>
-          <div>
+          <div class="submit-button">
             <button class="new-tweet-button"  type="submit">Tweet</button>
             <output id="text-counter" class="counter" name="counter"  for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+    <!-- Page-specific (posted tweets) content here -->
+      <section class="tweet-container">
+          <header class="user">
+            <div class="username">
+              <img class="profile-picture" src="/images/avatar.png"> 
+              <label><em>Doctor</em></label>
+            </div>
+            <div class="user-handle">
+              <label class="account-name">@TheDoctor</label>
+            </div>
+          </header>
+          <div class="tweet-contents"> 
+            People assume that time is a strict progression of cause to effect, but actually, from a nonlinear, non-subjective viewpoint, it's more like a big ball of wibbly-wobbly, timey-wimey... stuff
+          </div>
+          <footer class="tweet-footer">
+            <div class="time-since-posted">
+               <label>10 days ago</label>
+            </div>
+            <div class="icons">           
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
 

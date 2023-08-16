@@ -1,0 +1,49 @@
+.tweet-container{
+  width: 100%;
+  border: 5px solid #545149;
+  padding: 2%;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.user{
+  display: flex;
+  height: 25%;
+  justify-content: space-between;
+}
+
+.username{
+  display: flex;
+  flex-direction: row;
+  font-size:xx-large;
+  height: 25%;
+  align-items: flex-start;
+
+}
+.profile-picture{
+width: 2em;
+height: auto;
+padding-right: 5%;
+
+}
+
+.user-handle{
+  color:rgb(216, 206, 216);
+  padding-right: 2em;
+  font-weight: bold;
+}
+.tweet-contents{
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.tweet-footer{
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  border-top: 5px solid #545149;
+  padding-top: 1em;
+}
+
+.icons{
+  padding-right: 2em;
+}
