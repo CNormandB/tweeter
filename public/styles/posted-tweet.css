@@ -3,6 +3,11 @@
   border: 5px solid #545149;
   padding: 2%;
   font-family: "Source Sans 3", sans-serif;
+  margin-bottom: 1em;
+}
+
+.tweet-container:hover {
+  box-shadow: 10px 10px #b9b8b8a1;
 }
 
 .user{
@@ -46,4 +51,8 @@ padding-right: 5%;
 
 .icons{
   padding-right: 2em;
+}
+
+.fa-solid:hover{
+  color: rgb(161, 134, 9)
 }

@@ -29,6 +29,7 @@
   display: flex;
   font-family: "bungee", sans-serif;
   justify-content: space-between;
+  padding-bottom: 2em;
 }
 
 .new-tweet-button {
