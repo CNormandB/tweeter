@@ -10,7 +10,7 @@
   flex: 0 0 100%;
 }
 
-.tweet-text-box {
+#tweet-text-box {
   background-color: #f4f1ec;
   width: 100%;
   border-top: 0px;
