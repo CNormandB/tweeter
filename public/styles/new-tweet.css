@@ -8,6 +8,11 @@
 
 .new-tweet {
   flex: 0 0 100%;
+  color: #545149;
+}
+
+#text-counter{
+  color: #545149; 
 }
 
 #tweet-text-box {
