@@ -16,7 +16,7 @@
   justify-content: space-between;
 }
 
-.username{
+.avatar-name{
   display: flex;
   flex-direction: row;
   font-size:xx-large;
@@ -24,19 +24,19 @@
   align-items: flex-start;
 
 }
-.profile-picture{
+.avatar{
 width: 2em;
 height: auto;
 padding-right: 5%;
 
 }
 
-.user-handle{
+.handle{
   color:rgb(216, 206, 216);
   padding-right: 2em;
   font-weight: bold;
 }
-.tweet-contents{
+.contents{
   padding-top: 2em;
   padding-bottom: 2em;
 }

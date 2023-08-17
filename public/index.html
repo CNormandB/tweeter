@@ -62,21 +62,22 @@
         </form>
       </section>
     <!-- Page-specific (posted tweets) content here -->
-      <section class="tweet-container">
+    <div id="tweets">  
+    <section class="tweet-container">
           <header class="user">
-            <div class="username">
-              <img class="profile-picture" src="/images/avatar.png"> 
-              <label><em>Doctor</em></label>
+            <div class="avatar-name">
+              <img class="avatar" src="/images/avatar.png"> 
+              <label class="name"><em>Doctor</em></label>
             </div>
-            <div class="user-handle">
-              <label class="account-name">@TheDoctor</label>
+            <div class="handle">
+              <label>@TheDoctor</label>
             </div>
           </header>
-          <div class="tweet-contents"> 
+          <div class="contents"> 
             People assume that time is a strict progression of cause to effect, but actually, from a nonlinear, non-subjective viewpoint, it's more like a big ball of wibbly-wobbly, timey-wimey... stuff
           </div>
           <footer class="tweet-footer">
-            <div class="time-since-posted">
+            <div class="created_at">
                <label>10 days ago</label>
             </div>
             <div class="icons">           
@@ -85,9 +86,9 @@
             <i class="fa-solid fa-heart"></i>
             </div>
           </footer>
-        </article>
       </section>
+    </div>
     </main>
-
+   
   </body>
 </html>
