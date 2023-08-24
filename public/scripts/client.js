@@ -55,15 +55,27 @@ $(document).ready(() => {
     let post_length = $("#tweet-text-box").val().length
     if (post_length !== undefined) {
       if (post_length == 0) {
-        alert("Your tweet is empty! Cannot submit!");
+        const error_div = $("#error-message");
+
+        error_div.slideDown("slow", function () {
+          error_div.text("Your tweet is empty! Cannot submit!");
+          error_div.css("display: block");
+        });
         return;
       }
       if  (post_length > 140) {
-        alert("Tweet is over 140 characters. Cannot submit!");
+          error_div.slideDown("slow", function () {
+            error_div.text("Tweet is over 140 characters. Cannot submit!");
+            error_div.css("display: block");
+        });
         return;
       }
     }
 
+    
+    error_div.slideUp("slow", function(){ 
+      error_div.css("display: none");
+    });
 
     // async await
     $.ajax({
