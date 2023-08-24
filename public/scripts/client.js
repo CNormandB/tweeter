@@ -6,69 +6,24 @@
 
 $(document).ready(() => {
 
-  const createTweetElement = () => {
-    $.get("tweets", data => {
-      for (let tweet of data) {
-        renderTweets(tweet);
-      }
-    });
-  };
-  createTweetElement();
-
-  const timeConversion = function(timeCreated) {
-    const difference = (Math.floor(Date.now())) - timeCreated;
-    let output = ``;
-    if (difference < 60) {
-      // Less than a minute has passed:
-      output = `${difference} second(s) ago`;
-    } else if (difference < 3600) {
-      // Less than an hour has passed:
-      output = `${Math.floor(difference / 60)} minute(s) ago`;
-    } else if (difference < 86400) {
-      // Less than a day has passed:
-      output = `${Math.floor(difference / 3600)} hour(s) ago`;
-    } else if (difference < 2620800) {
-      // Less than a month has passed:
-      output = `${Math.floor(difference / 86400)} day(s) ago`;
-    } else if (difference < 31449600) {
-      // Less than a year has passed:
-      output = `${Math.floor(difference / 2620800)} month(s) ago`;
-    } else {
-      // More than a year has passed:
-      output = `${Math.floor(difference / 31449600)} year(s) ago`;
-    }
-    return output;
-  };
-
-  const renderTweets = tweetObject => {
-    let avatar = "/images/avatar.png";
-    let timeStamp = timeConversion(Date.now());
-
-    if (tweetObject.user.avatars) {
-      avatar = tweetObject.user.avatars;
-    }
-    if (tweetObject.created_at) {
-      timeStamp = timeConversion(tweetObject.created_at);
-    }
-
-    let tweetTemplate =
-      `
-   <section class="tweet-container">
-      <header class="user">
+  const createTweetElement = (tweet) => {
+    let tweetTemplate = `
+    <div class="tweet">  
+        <header class="user">
         <div class="avatar-name">
-          <img class="avatar" src= "${avatar}">
-            <label class="name"><em>${tweetObject.user.name}</em></label>
+          <img class="avatar" src= "${tweet.user.avatars}">
+            <label class="name"><em>${tweet.user.name}</em></label>
         </div>
         <div class="handle">
-          <label>${tweetObject.user.handle}</label>
+          <label>${tweet.user.handle}</label>
         </div>
       </header>
       <div class="contents">
-        ${tweetObject.content.text}
+        ${tweet.content.text}
       </div>
       <footer class="tweet-footer">
         <div class="created_at">
-          <label>${timeStamp}</label>
+          <span>${timeago.format(tweet.created_at)}</span>
         </div>
         <div class="icons">
           <i class="fa-solid fa-flag"></i>
@@ -76,20 +31,37 @@ $(document).ready(() => {
           <i class="fa-solid fa-heart"></i>
         </div>
       </footer>
-    </section>
+      </div>
   `;
     $("#tweets").append(tweetTemplate);
   };
 
-  $("form").on("submit", function(event) {
-    let counterNumber = parseInt($("#text-counter").val(), 10)
-    if (counterNumber <= 0 || counterNumber === 140){
-      event.preventDefault();
-    } else {
-      $("form").serialize();
-      console.log($("form").serialize())
+
+  const renderTweets = function(tweetData) {
+    for (const tweet of tweetData) {
+      createTweetElement(tweet);
     }
-  
+  };
+
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+
+    let post_length = $("#tweet-text-box").val().length
+    if(post_length == 0 || post_length > 140){
+      return;
+    }
+
+
+    // async await
+    $.ajax({
+      method: 'POST',
+      url: '/tweets',
+      data: $("form").serialize()
+    }).then(loadTweets);
   });
 
+  const loadTweets = () => {
+    $.ajax("/tweets", { method: 'GET' }).then(renderTweets);
+  };
+  loadTweets();
 });
