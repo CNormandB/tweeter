@@ -1,12 +1,19 @@
 .tweet-container{
   width: 100%;
-  border: 5px solid #545149;
-  padding: 2%;
   font-family: "Source Sans 3", sans-serif;
-  margin-bottom: 1em;
 }
 
-.tweet-container:hover {
+
+.tweet {
+  padding: 2%;
+  margin-bottom: 2em;
+  gap: 1em;
+  width: 100%;
+  border: 5px solid #545149;
+}
+
+
+.tweet:hover {
   box-shadow: 10px 10px #b9b8b8a1;
 }
 
@@ -39,6 +46,7 @@ padding-right: 5%;
 .contents{
   padding-top: 2em;
   padding-bottom: 2em;
+  overflow-wrap: break-word;
 }
 
 .tweet-footer{
