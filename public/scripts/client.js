@@ -6,20 +6,26 @@
 
 $(document).ready(() => {
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = (tweet) => {
     let tweetTemplate = `
     <div class="tweet">  
         <header class="user">
         <div class="avatar-name">
           <img class="avatar" src= "${tweet.user.avatars}">
-            <label class="name"><em>${tweet.user.name}</em></label>
+            <label class="name"><em>${escape(tweet.user.name)}</em></label>
         </div>
         <div class="handle">
-          <label>${tweet.user.handle}</label>
+          <label>${escape(tweet.user.handle)}</label>
         </div>
       </header>
       <div class="contents">
-        ${tweet.content.text}
+        ${escape(tweet.content.text)}
       </div>
       <footer class="tweet-footer">
         <div class="created_at">
@@ -33,7 +39,7 @@ $(document).ready(() => {
       </footer>
       </div>
   `;
-    $("#tweets").append(tweetTemplate);
+    $("#tweets").prepend(tweetTemplate);
   };
 
 
@@ -47,8 +53,15 @@ $(document).ready(() => {
     event.preventDefault();
 
     let post_length = $("#tweet-text-box").val().length
-    if(post_length == 0 || post_length > 140){
-      return;
+    if (post_length !== undefined) {
+      if (post_length == 0) {
+        alert("Your tweet is empty! Cannot submit!");
+        return;
+      }
+      if  (post_length > 140) {
+        alert("Tweet is over 140 characters. Cannot submit!");
+        return;
+      }
     }
 
 
