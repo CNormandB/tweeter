@@ -24,3 +24,25 @@
   font-family: "Source Sans 3", sans-serif;
   font-size: 1em;
 }
+
+  /* Another tablet breakpoint is maximum width of 1024px */
+  @media only screen and (max-width: 1024px) {
+    .nav-bar{
+      background-color: #f4f1ec00;
+    }
+    }
+  
+@media only screen and (min-width: 1024px) {
+  nav{ 
+   background-color: #4056A1;
+  }
+ 
+  body{
+   display: flex;
+   flex-direction: row;
+  }
+  .header{
+    width: 30%;
+  }
+}
+
