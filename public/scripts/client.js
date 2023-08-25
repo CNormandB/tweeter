@@ -6,7 +6,7 @@
 
 $(document).ready(() => {
 
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -52,37 +52,38 @@ $(document).ready(() => {
   $("form").on("submit", function(event) {
     event.preventDefault();
 
-    let post_length = $("#tweet-text-box").val().length
+    let post_length = $("#tweet-text-box").val().length;
+    const error_div = $("#error-message");
+
     if (post_length !== undefined) {
       if (post_length == 0) {
-        const error_div = $("#error-message");
-
-        error_div.slideDown("slow", function () {
+        
+        error_div.slideDown("slow", function() {
           error_div.text("Your tweet is empty! Cannot submit!");
           error_div.css("display: block");
         });
         return;
       }
-      if  (post_length > 140) {
-          error_div.slideDown("slow", function () {
-            error_div.text("Tweet is over 140 characters. Cannot submit!");
-            error_div.css("display: block");
+      if (post_length > 140) {
+        error_div.slideDown("slow", function() {
+          error_div.text("Tweet is over 140 characters. Cannot submit!");
+          error_div.css("display: block");
         });
         return;
       }
+      error_div.slideUp("slow", function() {
+        error_div.css("display: none");
+      });  
     }
-
-    
-    error_div.slideUp("slow", function(){ 
-      error_div.css("display: none");
-    });
-
     // async await
     $.ajax({
       method: 'POST',
       url: '/tweets',
       data: $("form").serialize()
     }).then(loadTweets);
+
+    $("#tweet-text-box").val('');
+    $(".counter").val(140);
   });
 
   const loadTweets = () => {
